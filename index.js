@@ -144,7 +144,7 @@ module.exports = async function createSywac (opts) {
     pkg.scripts.pretest = 'standard'
     pkgChanged = true
   }
-  if (!pkg.scripts.test) {
+  if (!pkg.scripts.test || pkg.scripts.test === 'echo "Error: no test specified" && exit 1') {
     pkg.scripts.test = 'tap --cov test.js'
     pkgChanged = true
   }
