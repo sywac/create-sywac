@@ -1,0 +1,51 @@
+{
+  "name": "create-sywac",
+  "version": "0.1.0",
+  "description": "npm init sywac",
+  "main": "index.js",
+  "bin": "cli.js",
+  "files": [
+    "cli.js",
+    "defaults/*",
+    "index.js"
+  ],
+  "scripts": {
+    "pretest": "standard",
+    "test": "tap --cov test.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "release": "standard-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sywac/create-sywac.git"
+  },
+  "keywords": [
+    "init",
+    "initialize",
+    "cli",
+    "project",
+    "scaffold",
+    "generate",
+    "generator"
+  ],
+  "author": "nexdrew",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sywac/create-sywac/issues"
+  },
+  "homepage": "https://github.com/sywac/create-sywac#readme",
+  "dependencies": {
+    "execa": "^1.0.0",
+    "figures": "^2.0.0",
+    "log-update": "^2.3.0",
+    "mkdirp": "^0.5.1",
+    "sywac": "^1.2.1",
+    "sywac-style-basic": "^1.0.1"
+  },
+  "devDependencies": {
+    "coveralls": "^3.0.2",
+    "standard": "^12.0.1",
+    "standard-version": "^4.4.0",
+    "tap": "^12.1.1"
+  }
+}
