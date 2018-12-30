@@ -6,6 +6,7 @@ const figures = require('figures')
 
 const MAIN = 'index.js'
 const BIN = 'cli.js'
+const GITIGNORE = 'gitignore' // npm turns .gitignore into .npmignore on publish or install ಠ_ಠ https://github.com/npm/npm/issues/1862
 const LICENSE = 'LICENSE'
 const README = 'README.md'
 
@@ -34,6 +35,7 @@ async function readJsonFile (pathToFile) {
 }
 
 async function loadDefault (fileName) {
+  if (fileName === ('.' + GITIGNORE)) fileName = GITIGNORE
   return readFile(path.join(__dirname, 'defaults', fileName))
 }
 
@@ -79,7 +81,7 @@ module.exports = async function createSywac (opts) {
   const files = [
     'package.json',
     BIN,
-    '.gitignore',
+    GITIGNORE,
     '.npmrc',
     '.travis.yml',
     LICENSE, // ISC by default, replace YYYY with new Date().getFullYear()
@@ -89,6 +91,7 @@ module.exports = async function createSywac (opts) {
   ]
   logUpdate(`Checking project ...`)
   let loaded = await Promise.all(files.map(async name => {
+    if (name === GITIGNORE) name = '.' + GITIGNORE
     const file = { name, path: path.join(baseDir, name) }
     if (name.endsWith('.json')) file.data = await readJsonFile(file.path)
     else file.data = await readFile(file.path)
