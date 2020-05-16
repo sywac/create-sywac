@@ -38,7 +38,7 @@
     "execa": "^1.0.0",
     "figures": "^3.2.0",
     "log-update": "^4.0.0",
-    "mkdirp": "^0.5.1",
+    "mkdirp": "^1.0.4",
     "sywac": "^1.2.1",
     "sywac-style-basic": "^1.0.1"
   },
