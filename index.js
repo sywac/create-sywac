@@ -10,15 +10,6 @@ const GITIGNORE = 'gitignore' // npm turns .gitignore into .npmignore on publish
 const LICENSE = 'LICENSE'
 const README = 'README.md'
 
-function mkdir (pathToDir) {
-  return new Promise((resolve, reject) => {
-    require('mkdirp')(pathToDir, err => {
-      if (err) return reject(err)
-      resolve()
-    })
-  })
-}
-
 function readFile (pathToFile) {
   return new Promise((resolve, reject) => {
     fs.readFile(pathToFile, 'utf8', (err, data) => {
@@ -71,7 +62,8 @@ module.exports = async function createSywac (opts) {
     baseDir = path.resolve(process.cwd(), opts.dir)
     const reld = path.relative(process.cwd(), baseDir)
     logUpdate(`Making directory ${reld} ...`)
-    await mkdir(baseDir)
+    const mkdirp = require('mkdirp')
+    await mkdirp(baseDir)
     logUpdate(`Making directory ${reld} ... ${figures.tick}`)
     logUpdate.done()
   } else {
