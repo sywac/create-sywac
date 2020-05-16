@@ -46,7 +46,7 @@
     "sywac-style-basic": "^2.0.0"
   },
   "devDependencies": {
-    "coveralls": "^3.0.2",
+    "coveralls": "^3.1.0",
     "standard": "^14.3.4",
     "standard-version": "^8.0.0",
     "tap": "^14.10.7"
