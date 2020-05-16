@@ -37,7 +37,7 @@
   "dependencies": {
     "execa": "^1.0.0",
     "figures": "^2.0.0",
-    "log-update": "^2.3.0",
+    "log-update": "^4.0.0",
     "mkdirp": "^0.5.1",
     "sywac": "^1.2.1",
     "sywac-style-basic": "^1.0.1"
