@@ -2,7 +2,13 @@
 
 > npm init sywac
 
+[![Build Status](https://travis-ci.com/sywac/create-sywac.svg?branch=master)](https://travis-ci.com/sywac/create-sywac)
+[![JavaScript Style Guide](https://badgen.net/badge/code%20style/standard/green)](https://standardjs.com)
+![Dependabot Badge](https://badgen.net/dependabot/sywac/create-sywac?icon=dependabot)
+
 This package is used to scaffold your sywac-powered CLI project when you run `npm init sywac`.
+
+For information about sywac, visit https://sywac.io
 
 ## Recommended Usage
 

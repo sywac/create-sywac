@@ -1,4 +1,5 @@
-sudo: false
+os: linux
+dist: bionic
 language: node_js
 node_js:
   - 'node'
