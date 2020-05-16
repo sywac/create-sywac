@@ -9,6 +9,9 @@
     "defaults/*",
     "index.js"
   ],
+  "engines": {
+    "node": ">=10"
+  },
   "scripts": {
     "pretest": "standard",
     "test": "tap --cov test.js",
