@@ -32,7 +32,7 @@ async function loadDefault (fileName) {
 
 function writeFile (pathToFile, contents, mode) {
   return new Promise((resolve, reject) => {
-    let opts = { encoding: 'utf8' }
+    const opts = { encoding: 'utf8' }
     if (mode) opts.mode = mode
     fs.writeFile(pathToFile, contents, opts, err => {
       if (err) return reject(err)
@@ -83,7 +83,7 @@ module.exports = async function createSywac (opts) {
     ])
   }
 
-  logUpdate(`Checking project ...`)
+  logUpdate('Checking project ...')
   let loaded = await Promise.all(files.map(async name => {
     if (name === GITIGNORE) name = '.' + GITIGNORE
     const file = { name, path: path.join(baseDir, name) }
@@ -127,12 +127,12 @@ module.exports = async function createSywac (opts) {
     pkgChanged = true
   }
 
-  let prodDeps = []
+  const prodDeps = []
   const pkgDependencies = pkg.dependencies || {}
   if (!pkgDependencies.sywac) prodDeps.push('sywac')
   if (!pkgDependencies['sywac-style-basic'] && !loaded[1].data) prodDeps.push('sywac-style-basic')
 
-  let devDeps = []
+  const devDeps = []
   if (opts.all) {
     const pkgFiles = [].concat(pkg.files).filter(Boolean)
     if (!pkgFiles.includes(BIN)) {
@@ -177,7 +177,7 @@ module.exports = async function createSywac (opts) {
   logUpdate.done()
 
   // do these concurrently
-  let written = loaded.slice(1).filter(file => {
+  const written = loaded.slice(1).filter(file => {
     if (file.default && !file.data) {
       file.rel = path.relative(process.cwd(), file.path)
       return true
@@ -215,13 +215,13 @@ module.exports = async function createSywac (opts) {
     console.log('And package.json looks good ' + figures.tick)
   }
   if (prodDeps.length) {
-    logUpdate(`Installing sywac ...`)
+    logUpdate('Installing sywac ...')
     await execa()('npm', ['i', '--save'].concat(prodDeps.map(d => d + '@latest')), { cwd: baseDir })
     logUpdate(`Installing sywac ... ${figures.tick}`)
     logUpdate.done()
   }
   if (devDeps.length) {
-    logUpdate(`Installing devDependencies ...`)
+    logUpdate('Installing devDependencies ...')
     await execa()('npm', ['i', '--save-dev'].concat(devDeps.map(d => d + '@latest')), { cwd: baseDir })
     logUpdate(`Installing devDependencies ... ${figures.tick}`)
     logUpdate.done()
